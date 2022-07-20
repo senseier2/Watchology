@@ -62,3 +62,55 @@ What needs debugging
 Set action items for the night 
 What are our tasks
 Who is doing what
+
+
+## Pseudocode
+
+```
+#landing page coding to do
+
+* sidebar + welcome modal
+* sidebar 
+    * header element with website title
+    * form accepts birthdate, movie sort options, button and event listener
+        * potentially also widget for date selection
+    * div to output recently searched birthdays
+    * help button - summons help modal
+    * about button - summons about modal
+* welcome modal 
+    * shows up if nothing in local storage, or noted in local storage
+    * contains header
+    * contains text elements
+* help modal & about modal
+    * optional separate modals
+
+
+#event listener main function
+
+* take in user birthday
+* take in any user sort options
+* get the users zodiac
+* get list of dates corresponding to zodiac sign
+* query the on this day API for each date to get a list of famous births
+* Render astrological sign to upper card
+* render some of those celebrites to the upper card (limit to ~5 random celebrities)
+* celebrity info is a link to the below movie card
+* query the imdb api using celebrity names to get movies 
+* get top rated movie for each celebrity
+* render movie information to lower card
+* save the user inputs to local storage
+* render birthday into recently searched birthday (could potentially be button?)
+
+#codify some stretch goals
+
+* make it pretty
+* add real gold to website
+* make birthdays stored into buttons that execute the api call
+* grab celebrity image - need an API for this?
+* grab movie trailer from youtube
+* calendar date select widget
+* help modal
+* about modal
+* astrological symbols on upper card
+
+```
