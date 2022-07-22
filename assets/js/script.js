@@ -1,10 +1,13 @@
+// globally scoped variables go here
 // Get the modal
 var modal = document.getElementById("welcomeModal");
 var celebList = document.getElementById("CelebrityNames");
-
+// var imdbKey = "k_7e0pfp3k"
+// var imdbKey = "k_zva2d8cp"
+var imdbKey="57df2f59f73d6513b02f8a10cd393e77"
 // Get the <span> element that closes the modal
 var span = document.getElementById("welcomeClose");
-console.log(span);
+// console.log(span);
 
 
 // When the user clicks on <span> (x), close the modal
@@ -28,17 +31,18 @@ function keyCheck() {
 
 keyCheck();
 
-// Created function for fetch
-function getAPI() {
+// function pulls from the on this day api
+function getOnThisDay() {
   const APIkey = "5545ff51d38bd9595e5804234560ff279eb49fe5";
+
   // let apiRequest = 'https://today.zenquotes.io/api/10/7/5545ff51d38bd9595e5804234560ff279eb49fe5'
   let apiRequest= "https://api.wikimedia.org/feed/v1/wikipedia/en/onthisday/all/12/15"
-
-  fetch(apiRequest, {
-      headers:{
-          'Authorization':'5545ff51d38bd9595e5804234560ff279eb49fe5'
-      },
-      })
+  fetch(apiRequest, 
+    // {
+    //   headers:{
+    //       'Authorization':'5545ff51d38bd9595e5804234560ff279eb49fe5'
+    //   },}
+      )
     .then(function (response) {
       console.log(response);      
       return response.json();
@@ -47,17 +51,46 @@ function getAPI() {
       let textArray=extractText(data);
       // console.log(textArray)
       let thespArray = textArray.filter(isThespian)
-      console.log( thespArray)
+      // console.log( thespArray)
       let nameArray = thespArray.map(extractName)
-      console.log(nameArray)
+      // console.log(nameArray)
       // var celebname= selected.births[0].
-      console.log(celebrityNames(data=nameArray[0]))
-      console.log(nameArray[0]);
+      renderCelebrityNames(nameArray[0])
+      getMovieTitles(api=imdbKey,celeb=nameArray[0]);
     });
   }
-  getAPI();
 
-  // for ( let i = 0, i <  )
+function getMovieTitles(api,celeb) {
+  // let movie="La La Land"
+    let requestURL= `https://api.themoviedb.org/3/search/person?api_key=${api}&query=${celeb}`
+
+    // console.log(requestURL)
+    data = fetch(requestURL) 
+        .then(function (response) {
+            if (!response.ok) {
+                // console.log(response)
+                return 
+            }
+            // console.log(response)
+            return response.json()
+        })
+        .then(function(data) {
+          console.log(data)
+          // movie = extractTitle(data)
+          // console.log(movie)
+        })
+      // console.log(data)
+}
+
+// function that extracts movie title from celebrity api call
+function extractTitle(data) {
+  // let title = data.results[0].description
+  let title = "(III) (Actress, La La Land (2016))"
+  trueTitle = title.match(/,\s(.*)\s\([0-9]*\)/i)
+  // console.log(title)
+  // console.log(trueTitle[1])
+}
+// function pulls from the imdb api
 
   function extractText(data) {
     let allText = Array()
@@ -82,16 +115,17 @@ function extractName(apiText){
   return celebName
 }
 
-let data = nameArray[0];
 
-
-
-function celebrityNames(data) {
+function renderCelebrityNames(data) {
   let celebrity = document.createElement("p");
   celebrity.textContent = data
   celebList.appendChild(celebrity);
-  console.log(data);
+  // console.log(data);
 return celebrity
 }
 
 
+
+// actually calling functions goes here + event listeners
+
+getOnThisDay();
