@@ -26,3 +26,36 @@ function keyCheck() {
 }
 
 keyCheck();
+
+// Created function for fetch
+function getAPI() {
+  const APIkey = "5545ff51d38bd9595e5804234560ff279eb49fe5";
+  // let apiRequest = 'https://today.zenquotes.io/api/10/7/5545ff51d38bd9595e5804234560ff279eb49fe5'
+  let apiRequest= "https://api.wikimedia.org/feed/v1/wikipedia/en/onthisday/all/12/15"
+
+  fetch(apiRequest, {
+      headers:{
+          'Authorization':'5545ff51d38bd9595e5804234560ff279eb49fe5'
+      },
+      })
+    .then(function (response) {
+      console.log(response);      
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data.births[0].text.includes('actor'));
+      // var celebname= selected.births[0].
+      
+    });
+  }
+  getAPI();
+
+  // for ( let i = 0, i <  )
+
+  function extractText(data) {
+    // for ( let i = 0; i <  )
+
+   
+
+
+  }
