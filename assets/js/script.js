@@ -1,5 +1,6 @@
 // Get the modal
 var modal = document.getElementById("welcomeModal");
+var celebList = document.getElementById("CelebrityNames");
 
 // Get the <span> element that closes the modal
 var span = document.getElementById("welcomeClose");
@@ -50,7 +51,8 @@ function getAPI() {
       let nameArray = thespArray.map(extractName)
       console.log(nameArray)
       // var celebname= selected.births[0].
-      
+      console.log(celebrityNames(data=nameArray[0]))
+      console.log(nameArray[0]);
     });
   }
   getAPI();
@@ -79,4 +81,17 @@ function extractName(apiText){
   let celebName=apiText.substr(0, apiText.indexOf(',')); 
   return celebName
 }
+
+let data = nameArray[0];
+
+
+
+function celebrityNames(data) {
+  let celebrity = document.createElement("p");
+  celebrity.textContent = data
+  celebList.appendChild(celebrity);
+  console.log(data);
+return celebrity
+}
+
 
