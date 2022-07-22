@@ -1,3 +1,50 @@
+:root {
+    --lightest-blue: #def0f7;
+    --light-blue: #449DD1;
+    --mid-blue: #192BC2;
+    --dark-blue: #150578;
+    --darkest-blue: #0E0E52;
+}
+
+.sidebar-left {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 20rem; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: var(--darkest-blue); /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px;
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+  color: var(--lightest-blue);
+}
+
+.sidebar-left h2 {
+    color: var(--lightest-blue);
+}
+
 ul {
     list-style: none;
+}
+
+main {
+    margin-left: 20rem; /* Same as the width of the sidebar */
+    padding: 0rem 1rem;
+    height:80%;
+}
+
+main header {
+margin: 1rem;
+padding: 3rem;
+text-align: center;
+font-size: large;
+
+}
+
+.secondary-button {
+    background-color: var(--mid-blue);
+    border: none;
 }
