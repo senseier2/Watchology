@@ -43,7 +43,12 @@ function getAPI() {
       return response.json();
     })
     .then(function (data) {
-      console.log(data.births[0].text.includes('actor'));
+      let textArray=extractText(data);
+      // console.log(textArray)
+      let thespArray = textArray.filter(isThespian)
+      console.log( thespArray)
+      let nameArray = thespArray.map(extractName)
+      console.log(nameArray)
       // var celebname= selected.births[0].
       
     });
@@ -53,9 +58,25 @@ function getAPI() {
   // for ( let i = 0, i <  )
 
   function extractText(data) {
-    // for ( let i = 0; i <  )
-
-   
-
+    let allText = Array()
+    allText.length = data.births.length
+    for ( let i = 0; i <  data.births.length; i++) {
+      allText[i]=data.births[i].text
+    }
+    // console.log(allText)
+    return allText
 
   }
+
+  // filter
+  function isThespian(value) {
+    thesp = value.includes("actor") | value.includes("actress")
+    return thesp
+  }
+
+
+function extractName(apiText){
+  let celebName=apiText.substr(0, apiText.indexOf(',')); 
+  return celebName
+}
+
