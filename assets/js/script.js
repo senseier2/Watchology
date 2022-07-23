@@ -2,6 +2,7 @@
 // Get the modal
 var modal = document.getElementById("welcomeModal");
 var celebList = document.getElementById("CelebrityNames");
+var movieList =  document.getElementById("lower-card")
 // var imdbKey = "k_7e0pfp3k"
 // var imdbKey = "k_zva2d8cp"
 var imdbKey="57df2f59f73d6513b02f8a10cd393e77"
@@ -76,6 +77,7 @@ function getMovieTitles(api,celeb) {
         })
         .then(function(data) {
           console.log(data)
+          renderMovieNames(data.results[0].known_for[0].title, data.results[0].known_for[0].poster_path)
           // movie = extractTitle(data)
           // console.log(movie)
         })
@@ -83,13 +85,13 @@ function getMovieTitles(api,celeb) {
 }
 
 // function that extracts movie title from celebrity api call
-function extractTitle(data) {
-  // let title = data.results[0].description
-  let title = "(III) (Actress, La La Land (2016))"
-  trueTitle = title.match(/,\s(.*)\s\([0-9]*\)/i)
-  // console.log(title)
-  // console.log(trueTitle[1])
-}
+// function extractTitle(data) {
+//   // let title = data.results[0].description
+//   let title = "(III) (Actress, La La Land (2016))"
+//   trueTitle = title.match(/,\s(.*)\s\([0-9]*\)/i)
+//   // console.log(title)
+//   // console.log(trueTitle[1])
+// }
 // function pulls from the imdb api
 
   function extractText(data) {
@@ -121,8 +123,20 @@ function renderCelebrityNames(data) {
   celebrity.textContent = data
   celebList.appendChild(celebrity);
   // console.log(data);
-return celebrity
 }
+
+function renderMovieNames(data, data2) {
+  let movieName = document.createElement('p');
+  movieName.textContent = data
+  movieList.appendChild(movieName);
+  let posterImg = document.createElement('img');
+  posterImg.setAttribute("src", "https://image.tmdb.org/t/p/original/" + (data2));
+  movieList.appendChild(posterImg);
+  
+  console.log(movieName);
+}
+
+
 
 
 
