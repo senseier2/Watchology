@@ -44,7 +44,16 @@ font-size: large;
 
 }
 
+
 .secondary-button {
     background-color: var(--mid-blue);
     border: none;
+}
+
+.upperCard {
+    border: solid 1px var(--lightest-blue);
+}
+
+.lowerCard {
+    border: solid 1px var(--lightest-blue);
 }
