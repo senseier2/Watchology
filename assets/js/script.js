@@ -77,7 +77,11 @@ function getMovieTitles(api,celeb) {
         })
         .then(function(data) {
           console.log(data)
-          renderMovieNames(data.results[0].known_for[0].title, data.results[0].known_for[0].poster_path)
+          renderMovieNames(data.results[0].known_for[0].title, 
+            data.results[0].known_for[0].poster_path, 
+            data.results[0].known_for[0].release_date,
+            data.results[0].known_for[0].vote_average,
+            data.results[0].known_for[0].overview)
           // movie = extractTitle(data)
           // console.log(movie)
         })
@@ -125,14 +129,36 @@ function renderCelebrityNames(data) {
   // console.log(data);
 }
 
-function renderMovieNames(data, data2) {
-  let movieName = document.createElement('p');
+function renderMovieNames(data, data2, data3, data4, data5) {
+  let movieName = document.createElement('h3');
   movieName.textContent = data
-  movieList.appendChild(movieName);
+
+  let movieRelease = document.createElement('p');
+  movieRelease.textContent = data3;
+ 
   let posterImg = document.createElement('img');
+
   posterImg.setAttribute("src", "https://image.tmdb.org/t/p/original/" + (data2));
-  movieList.appendChild(posterImg);
+  posterImg.setAttribute("style", "width:50%;")
+
+  let userRating = document.createElement('p');
+  userRating.textContent = data4;
+
+  let overviewData = document.createElement('p');
+  overviewData.textContent = data5;
+
+  let cardDiv = document.createElement('div');
+  cardDiv.setAttribute("style", "display:inline;")
+
+  console.log(data5)
   
+  movieList.appendChild(movieName);
+  movieList.appendChild(posterImg);
+  movieList.appendChild(cardDiv);
+  cardDiv.appendChild(movieRelease);
+  cardDiv.appendChild(overviewData);
+  cardDiv.appendChild(userRating);
+
   console.log(movieName);
 }
 
