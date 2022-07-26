@@ -139,7 +139,39 @@ function renderMovieNames(data, data2) {
 
 
 
+// Creating function to grab user input
+var formSubmitHandler = function(event) {
+  event.preventDefault();
+var birthdayDates = document.querySelector("#datepicker");
+    console.log (birthdayDates.value)
+
+
+
+
+
+
+
+
+
+}
+
+$( function() {
+  $( "#datepicker" ).datepicker({
+    changeMonth: true,
+    changeYear: true
+  });
+} );
+
+
+
+
+
+
 
 // actually calling functions goes here + event listeners
 
 getOnThisDay();
+var userForm = document.querySelector("#user-form");
+
+userForm.addEventListener("submit", formSubmitHandler);
+

@@ -57,3 +57,9 @@ font-size: large;
 .lowerCard {
     border: solid 1px var(--lightest-blue);
 }
+
+.ui-widget-content {
+    background-color: aliceblue;
+
+
+}
