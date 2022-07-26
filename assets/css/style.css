@@ -52,6 +52,7 @@ font-size: large;
 
 .upperCard {
     border: solid 1px var(--lightest-blue);
+    display: flex;
 }
 
 .lowerCard {

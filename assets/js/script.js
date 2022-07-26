@@ -3,6 +3,7 @@
 var modal = document.getElementById("welcomeModal");
 var celebList = document.getElementById("CelebrityNames");
 var movieList =  document.getElementById("lower-card")
+var celebLimit=5
 // var imdbKey = "k_7e0pfp3k"
 // var imdbKey = "k_zva2d8cp"
 var imdbKey="57df2f59f73d6513b02f8a10cd393e77"
@@ -56,8 +57,12 @@ function getOnThisDay(datearray) {
       let nameArray = thespArray.map(extractName)
       // console.log(nameArray)
       // var celebname= selected.births[0].
-      renderCelebrityNames(nameArray[0])
-      getMovieTitles(api=imdbKey,celeb=nameArray[0]);
+      clearDiv(celebList)
+      clearDiv(movieList)
+      for (i=0; i < celebLimit; i ++) {
+        renderCelebrityNames(nameArray[i])
+        getMovieTitles(api=imdbKey,celeb=nameArray[i]);
+      }
     });
   }
 
@@ -83,12 +88,25 @@ function getMovieTitles(api,celeb) {
             data.results[0].known_for[0].vote_average,
             data.results[0].known_for[0].overview,
             data.results[0].known_for[0].name)
+          appendCelebImage(celeb,data)
           // movie = extractTitle(data)
           // console.log(movie)
         })
       // console.log(data)
 }
-
+function appendCelebImage(celeb,data) {
+  // find the corresponding celebrity sub card
+  // find the image from their profile if one exists
+  // otherwise finds the placeholder
+  // appends the image to the celebrity subcard
+  console.log(celeb.replace(/\s/g, ''))
+  let subCard=document.querySelector("#" + celeb.replace(/\s/g, ''))
+  console.log(subCard)
+  let img = document.createElement("img")
+  img.setAttribute("src",`https://image.tmdb.org/t/p/original${data.results[0].profile_path}`)
+  img.setAttribute("style","width: 50%;")
+  subCard.appendChild(img)
+}
 // function that extracts movie title from celebrity api call
 // function extractTitle(data) {
 //   // let title = data.results[0].description
@@ -124,9 +142,12 @@ function extractName(apiText){
 
 
 function renderCelebrityNames(data) {
+  let div = document.createElement("div")
   let celebrity = document.createElement("p");
   celebrity.textContent = data
-  celebList.appendChild(celebrity);
+  div.setAttribute("id",data.replace(/\s/g, ''))
+  div.appendChild(celebrity)
+  celebList.appendChild(div);
   // console.log(data);
 }
 
@@ -199,7 +220,10 @@ $( function() {
 } );
 
 
-
+var clearDiv= function(div) {
+  div.innerHTML = ""
+  return
+}
 
 
 
