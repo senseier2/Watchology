@@ -33,11 +33,11 @@ function keyCheck() {
 keyCheck();
 
 // function pulls from the on this day api
-function getOnThisDay() {
+function getOnThisDay(datearray) {
   const APIkey = "5545ff51d38bd9595e5804234560ff279eb49fe5";
 
   // let apiRequest = 'https://today.zenquotes.io/api/10/7/5545ff51d38bd9595e5804234560ff279eb49fe5'
-  let apiRequest= "https://api.wikimedia.org/feed/v1/wikipedia/en/onthisday/all/12/15"
+  let apiRequest= `https://api.wikimedia.org/feed/v1/wikipedia/en/onthisday/all/${datearray[0]}/${datearray[1]}`
   fetch(apiRequest, 
     // {
     //   headers:{
@@ -143,9 +143,9 @@ function renderMovieNames(data, data2) {
 var formSubmitHandler = function(event) {
   event.preventDefault();
 var birthdayDates = document.querySelector("#datepicker");
-    console.log (birthdayDates.value)
+    console.log (birthdayDates.value.split ("/",2))
 
-
+    getOnThisDay(birthdayDates.value.split ("/",2));
 
 
 
@@ -170,7 +170,7 @@ $( function() {
 
 // actually calling functions goes here + event listeners
 
-getOnThisDay();
+
 var userForm = document.querySelector("#user-form");
 
 userForm.addEventListener("submit", formSubmitHandler);
