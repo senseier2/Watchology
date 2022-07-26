@@ -81,7 +81,8 @@ function getMovieTitles(api,celeb) {
             data.results[0].known_for[0].poster_path, 
             data.results[0].known_for[0].release_date,
             data.results[0].known_for[0].vote_average,
-            data.results[0].known_for[0].overview)
+            data.results[0].known_for[0].overview,
+            data.results[0].known_for[0].name)
           // movie = extractTitle(data)
           // console.log(movie)
         })
@@ -129,7 +130,7 @@ function renderCelebrityNames(data) {
   // console.log(data);
 }
 
-function renderMovieNames(data, data2, data3, data4, data5) {
+function renderMovieNames(data, data2, data3, data4, data5, data6) {
   let movieName = document.createElement('h3');
   movieName.textContent = data
 
@@ -139,7 +140,7 @@ function renderMovieNames(data, data2, data3, data4, data5) {
   let posterImg = document.createElement('img');
 
   posterImg.setAttribute("src", "https://image.tmdb.org/t/p/original/" + (data2));
-  posterImg.setAttribute("style", "width:50%;")
+  posterImg.setAttribute("style", "width:50%;");
 
   let userRating = document.createElement('p');
   userRating.textContent = data4;
@@ -147,19 +148,28 @@ function renderMovieNames(data, data2, data3, data4, data5) {
   let overviewData = document.createElement('p');
   overviewData.textContent = data5;
 
-  let cardDiv = document.createElement('div');
-  cardDiv.setAttribute("style", "display:inline;")
+  let infoDiv = document.createElement('div');
+  //infoDiv.setAttribute("style", "display:inline;")
 
+  let titleDiv = document.createElement('div');
   console.log(data5)
   
-  movieList.appendChild(movieName);
-  movieList.appendChild(posterImg);
-  movieList.appendChild(cardDiv);
-  cardDiv.appendChild(movieRelease);
-  cardDiv.appendChild(overviewData);
-  cardDiv.appendChild(userRating);
+  let tvTitle = document.createElement('h3');
+  tvTitle.textContent = data6;
 
-  console.log(movieName);
+  let movieDiv = document.createElement('div');
+  movieDiv.setAttribute("style", "display:flex");
+  //console.log(data5)
+  movieList.appendChild(movieDiv)
+  movieDiv.appendChild(titleDiv);
+  movieDiv.appendChild(infoDiv);
+  titleDiv.appendChild(posterImg);
+  infoDiv.appendChild(tvTitle);
+  infoDiv.appendChild(movieName);
+  infoDiv.appendChild(movieRelease);
+  infoDiv.appendChild(overviewData);
+  infoDiv.appendChild(userRating);
+     console.log(movieName);
 }
 
 
