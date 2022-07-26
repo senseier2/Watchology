@@ -22,8 +22,13 @@
   color: var(--lightest-blue);
 }
 
-.sidebar-left h2 {
+.sidebar-left h4 {
     color: var(--lightest-blue);
+    font-family: "Monoton";
+}
+
+.sidebar {
+    font-family:"Comfortaa";
 }
 
 ul {
@@ -34,6 +39,8 @@ main {
     margin-left: 20rem; /* Same as the width of the sidebar */
     padding: 0rem 1rem;
     height:80%;
+    background-color: var(--lightest-blue);
+    font-family: "Comfortaa";
 }
 
 main header {
@@ -51,12 +58,23 @@ font-size: large;
 }
 
 .upperCard {
-    border: solid 1px var(--lightest-blue);
-    display: flex;
+    border: solid 1px var(--darkest-blue);
+    /* display:flex; */
+}
+
+.card-header {
+    display:block;
+    font-family:"Comfortaa";
+    /* Added font for body */
+}
+
+.card-body {
+    display:flex; 
+    /* Added flex to the card-body div for flex */
 }
 
 .lowerCard {
-    border: solid 1px var(--lightest-blue);
+    border: solid 1px var(--darkest-blue);
 }
 
 .ui-widget-content {

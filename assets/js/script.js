@@ -101,10 +101,11 @@ function appendCelebImage(celeb,data) {
   // appends the image to the celebrity subcard
   console.log(celeb.replace(/\s/g, ''))
   let subCard=document.querySelector("#" + celeb.replace(/\s/g, ''))
+  subCard.setAttribute("style", "margin-right:20px; padding:10px")
   console.log(subCard)
   let img = document.createElement("img")
   img.setAttribute("src",`https://image.tmdb.org/t/p/original${data.results[0].profile_path}`)
-  img.setAttribute("style","width: 50%;")
+  img.setAttribute("style","width: 180px; margin-right:20px")
   subCard.appendChild(img)
 }
 // function that extracts movie title from celebrity api call
@@ -161,7 +162,7 @@ function renderMovieNames(data, data2, data3, data4, data5, data6) {
   let posterImg = document.createElement('img');
 
   posterImg.setAttribute("src", "https://image.tmdb.org/t/p/original/" + (data2));
-  posterImg.setAttribute("style", "width:50%;");
+  posterImg.setAttribute("style", "width:180px; margin-right: 20px");
 
   let userRating = document.createElement('p');
   userRating.textContent = data4;
@@ -170,7 +171,7 @@ function renderMovieNames(data, data2, data3, data4, data5, data6) {
   overviewData.textContent = data5;
 
   let infoDiv = document.createElement('div');
-  //infoDiv.setAttribute("style", "display:inline;")
+  //infoDiv.setAttribute("style", "responsive:true")
 
   let titleDiv = document.createElement('div');
   console.log(data5)
@@ -179,7 +180,7 @@ function renderMovieNames(data, data2, data3, data4, data5, data6) {
   tvTitle.textContent = data6;
 
   let movieDiv = document.createElement('div');
-  movieDiv.setAttribute("style", "display:flex");
+  movieDiv.setAttribute("style", "display:flex; border: solid 2px var(--lightest-blue)");
   //console.log(data5)
   movieList.appendChild(movieDiv)
   movieDiv.appendChild(titleDiv);
