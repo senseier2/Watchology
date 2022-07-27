@@ -2,7 +2,8 @@
 // Get the modal
 var modal = document.getElementById("welcomeModal");
 var celebList = document.getElementById("CelebrityNames");
-var movieList =  document.getElementById("lower-card")
+var movieList =  document.getElementById("lower-card");
+var searchHistory = document.getElementById("search-history");
 var celebLimit=5
 // var imdbKey = "k_7e0pfp3k"
 // var imdbKey = "k_zva2d8cp"
@@ -87,7 +88,8 @@ function getMovieTitles(api,celeb) {
             data.results[0].known_for[0].release_date,
             data.results[0].known_for[0].vote_average,
             data.results[0].known_for[0].overview,
-            data.results[0].known_for[0].name)
+            data.results[0].known_for[0].name,
+            data.results[0].known_for[0].first_air_date,)
           appendCelebImage(celeb,data)
           // movie = extractTitle(data)
           // console.log(movie)
@@ -99,13 +101,13 @@ function appendCelebImage(celeb,data) {
   // find the image from their profile if one exists
   // otherwise finds the placeholder
   // appends the image to the celebrity subcard
-  console.log(celeb.replace(/\s/g, ''))
+ // console.log(celeb.replace(/\s/g, ''))
   let subCard=document.querySelector("#" + celeb.replace(/\s/g, ''))
   subCard.setAttribute("style", "margin-right:20px; padding:10px")
-  console.log(subCard)
+ // console.log(subCard)
   let img = document.createElement("img")
   img.setAttribute("src",`https://image.tmdb.org/t/p/original${data.results[0].profile_path}`)
-  img.setAttribute("style","width: 100%; margin-right:20px")
+  img.setAttribute("style","width: 180px; margin-right:20px; box-shadow: 5px 5px 5px lightblue")
   subCard.appendChild(img)
 }
 // function that extracts movie title from celebrity api call
@@ -152,20 +154,24 @@ function renderCelebrityNames(data) {
   // console.log(data);
 }
 
-function renderMovieNames(data, data2, data3, data4, data5, data6) {
+function renderMovieNames(data, data2, data3, data4, data5, data6, data7) {
   let movieName = document.createElement('h3');
   movieName.textContent = data
 
   let movieRelease = document.createElement('p');
   movieRelease.textContent = data3;
+
+  let airDate = document.createElement('p');
+  airDate.textContent = data7;
  
   let posterImg = document.createElement('img');
 
   posterImg.setAttribute("src", "https://image.tmdb.org/t/p/original/" + (data2));
-  posterImg.setAttribute("style", "width:180px; margin-right: 20px");
+  posterImg.setAttribute("style", "width:180px; margin-right: 20px; box-shadow: 5px 5px 5px lightblue;");
 
   let userRating = document.createElement('p');
-  userRating.textContent = data4;
+  userRating.textContent = "Voter Rating: " + data4;
+  userRating.setAttribute("style", "text-align: right")
 
   let overviewData = document.createElement('p');
   overviewData.textContent = data5;
@@ -180,7 +186,7 @@ function renderMovieNames(data, data2, data3, data4, data5, data6) {
   tvTitle.textContent = data6;
 
   let movieDiv = document.createElement('div');
-  movieDiv.setAttribute("style", "display:flex; border: solid 2px var(--lightest-blue)");
+  movieDiv.setAttribute("style", "display:flex; border: solid 2px var(--lightest-blue); padding:10px; overflow:scroll; margin-bottom:1px");
   //console.log(data5)
   movieList.appendChild(movieDiv)
   movieDiv.appendChild(titleDiv);
@@ -189,6 +195,7 @@ function renderMovieNames(data, data2, data3, data4, data5, data6) {
   infoDiv.appendChild(tvTitle);
   infoDiv.appendChild(movieName);
   infoDiv.appendChild(movieRelease);
+  infoDiv.appendChild(airDate);
   infoDiv.appendChild(overviewData);
   infoDiv.appendChild(userRating);
    // console.log(movieName);
