@@ -174,7 +174,7 @@ function renderMovieNames(data, data2, data3, data4, data5, data6) {
   //infoDiv.setAttribute("style", "responsive:true")
 
   let titleDiv = document.createElement('div');
-  console.log(data5)
+ // console.log(data5)
   
   let tvTitle = document.createElement('h3');
   tvTitle.textContent = data6;
@@ -191,24 +191,62 @@ function renderMovieNames(data, data2, data3, data4, data5, data6) {
   infoDiv.appendChild(movieRelease);
   infoDiv.appendChild(overviewData);
   infoDiv.appendChild(userRating);
-     console.log(movieName);
+   // console.log(movieName);
 }
 
+//Check that verifies if there is already a birthdate in local storage
 
+function checkLocalStorage() {
+stored=localStorage.getItem("birthdate")
+console.log(typeof stored )
+  if (stored !== null) {
+    console.log( localStorage.getItem("birthdate"))
+    let oldBirthday = JSON.parse(localStorage.getItem("birthdate"));
+
+    for (let i = 0; i < oldBirthday.length; i++) {
+
+    let firstSearch = document.createElement("li");
+    firstSearch.textContent = oldBirthday[i];
+    searchHistory.appendChild(firstSearch);
+  }
+    return oldBirthday
+    //console.log(birthDate);
+  } else {
+    return []
+  } 
+}
+
+var birthDate = checkLocalStorage();
+console.log(birthDate)
+
+//Render birthdates to page
+
+  //capture birthdays from the array
+
+
+  //Append birthdays to the search history div
 
 
 // Creating function to grab user input
 var formSubmitHandler = function(event) {
   event.preventDefault();
 var birthdayDates = document.querySelector("#datepicker");
-    console.log (birthdayDates.value.split ("/",2))
+   // console.log (birthdayDates.value.split ("/",2))
 
     getOnThisDay(birthdayDates.value.split ("/",2));
 
 
 
+//Append to birthday list
+let firstSearch = document.createElement("li");
+    firstSearch.textContent = birthdayDates.value.split ("/",2);
+    searchHistory.appendChild(firstSearch);
 
-
+//Append to Array
+birthDate.push(birthdayDates.value.split("/",2).join("/"))
+console.log(birthDate)
+//Update Local storage
+localStorage.setItem("birthdate", JSON.stringify(birthDate)); 
 
 
 }
