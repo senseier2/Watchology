@@ -105,7 +105,7 @@ function appendCelebImage(celeb,data) {
   console.log(subCard)
   let img = document.createElement("img")
   img.setAttribute("src",`https://image.tmdb.org/t/p/original${data.results[0].profile_path}`)
-  img.setAttribute("style","width: 180px; margin-right:20px")
+  img.setAttribute("style","width: 100%; margin-right:20px")
   subCard.appendChild(img)
 }
 // function that extracts movie title from celebrity api call
