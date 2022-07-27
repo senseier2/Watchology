@@ -19,7 +19,7 @@
   align-items: center;
   flex-direction: column;
   display: flex;
-  color: var(--lightest-blue);
+  color: var(--lightest-blue);  
 }
 
 .sidebar-left h4 {
@@ -70,6 +70,7 @@ font-size: large;
 
 .card-body {
     display:flex; 
+    position: relative;
     /* Added flex to the card-body div for flex */
 }
 
@@ -82,3 +83,99 @@ font-size: large;
 
 
 }
+/*@media only screen 
+  and (min-device-width: 375px) 
+  and (max-device-width: 812px) 
+  and (-webkit-min-device-pixel-ratio: 0) { 
+      .card-body {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 50px;
+        position: relative;
+
+      }
+      .card-header {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 50px;
+        position: relative;
+      }
+    }
+
+@media screen
+and (min-device-width: 375px) 
+and (max-device-width: 812px) 
+and (-webkit-min-device-pixel-ratio: 0) {
+    .sidebar-left h4 {
+        flex-wrap: wrap;
+
+    }
+}*/
+.card-body div {
+    position: relative;
+    float: left;
+    width: 20%;
+}
+
+@media screen and (max-width: 1400px) {
+    .card-body {
+        width:100%;
+        height: fit-content;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 50px;
+        position: relative;
+  
+    }
+    .card-header {
+        justify-content: center;
+        display: flex;
+        text-align: center;
+    }
+}
+    /*.card-body div {
+    
+    }
+
+ 
+}*/
+
+/*@media screen and (min-width:480px) {
+    .card-body {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: 50px;
+        position: relative;
+  
+    }
+    .card-header {  
+        justify-content: center;
+        display: flex;
+        text-align: center;
+    }
+    
+}*/
+ 
+/*@media screen  and (min-device-width: 200px)  and (max-device-width: 1024px) {
+    .card-body {
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: 50px;
+        position: relative;
+    }
+     .card-header {  
+        justify-content: space-around;
+        display: flex;
+        text-align: center;
+    }
+    .card-body div {
+        display: block;
+    }
+}*/
+
