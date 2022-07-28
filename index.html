@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Watchalogy</title>
+        <title>Movie Twin</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://unpkg.com/mustard-ui@latest/dist/css/mustard-ui.min.css">
         <link rel="stylesheet" href="./assets/css/style.css" />
@@ -59,10 +59,10 @@
 
                 </ul>
             </div>
-            <button class="secondary-button">
+            <button class="secondary-button" id = "help-button">
               Help
             </button>
-            <button class="secondary-button">
+            <button class="secondary-button" id = "about-button">
               About
             </button>
         </div>
@@ -84,16 +84,44 @@
         <div class="modal-mask" id ="welcomeModal" style="display: none">
             <div class="modal">
                 <div class="modal-head">
-                    <p class="modal-title">Welcome to Watchology</p>
+                    <p class="modal-title">Welcome to Movie Twin</p>
                 </div>
                 <div class="modal-body">
-                    <p>To use Watchology input a birthdate to match your Zodiac with celebrities. Watchology will align the stars charts and find your celestial movie match. Happy Watching!</p>
+                    <p>To use Movie Twin input a birthdate to match your birthday with celebrities. Movie Twin will find your seperated at birth celebrity twin and suggest movies for you. Happy Watching!</p>
                 </div>
                 <div class="modal-footer">
                     <button class="button-primary" id="welcomeClose">Close</button>
                 </div>
             </div>
         </div>
+
+        <div class="modal-mask" id ="helpModal" style="display: none">
+          <div class="modal">
+              <div class="modal-head">
+                  <p class="modal-title">Help</p>
+              </div>
+              <div class="modal-body">
+                  <p>To use Movie Twin input a birthdate to match your birthday with celebrities. Don't worry about the year! Movie twin will still be able to find your match!</p>
+              </div>
+              <div class="modal-footer">
+                  <button class="button-primary" id="helpClose">Close</button>
+              </div>
+          </div>
+      </div>
+
+      <div class="modal-mask" id ="aboutModal" style="display: none">
+        <div class="modal">
+            <div class="modal-head">
+                <p class="modal-title">About</p>
+            </div>
+            <div class="modal-body">
+                <p>Ryan Schubert, Kaluki Musau, Eric McGhee, Nahian Bari are full-stack student at Northwestern coding bootcamp.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="button-primary" id="aboutClose">Close</button>
+            </div>
+        </div>
+    </div>
         <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
         <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
         <script src="./assets/js/script.js"></script>
