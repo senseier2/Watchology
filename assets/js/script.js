@@ -216,6 +216,7 @@ function renderMovieNames(data, data2, data3, data4, data5, data6, data7, data8)
   let movieDiv = document.createElement('div');
   movieDiv.setAttribute("style", "display:flex; border: solid 2px var(--lightest-blue); padding:10px; overflow:scroll; margin-bottom:1px");
   //console.log(data5)
+  movieDiv.setAttribute("class","movieDiv")
   movieList.appendChild(movieDiv)
   movieDiv.appendChild(titleDiv);
   movieDiv.appendChild(infoDiv);
@@ -311,7 +312,25 @@ var clearDiv= function(div) {
   return
 }
 
+function openNav(x) {
+  if (x.matches) {
+    document.querySelector(".sidebar").style.display= "flex";
+    document.querySelector(".sidebar").style.width= "100%";
+    document.querySelector("main").style.display = "none";
+  } else {
+    document.querySelector(".sidebar").style.display= "flex";
+    document.querySelector(".sidebar").style.width= "20rem";
+    document.querySelector("main").style.marginLeft = "20rem";
+  }
 
+}
+
+/* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
+function closeNav() {
+  document.querySelector("main").style.display = "inline-block";
+  document.querySelector(".sidebar").style.display= "none";
+  document.querySelector("main").style.marginLeft = "0rem";
+}
 
 
 // actually calling functions goes here + event listeners
