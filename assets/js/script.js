@@ -112,7 +112,8 @@ function getMovieTitles(api,celeb) {
             data.results[0].known_for[0].vote_average,
             data.results[0].known_for[0].overview,
             data.results[0].known_for[0].name,
-            data.results[0].known_for[0].first_air_date,)
+            data.results[0].known_for[0].first_air_date,
+            data.results[0].name)
           appendCelebImage(celeb,data)
           // movie = extractTitle(data)
           // console.log(movie)
@@ -177,7 +178,11 @@ function renderCelebrityNames(data) {
   // console.log(data);
 }
 
-function renderMovieNames(data, data2, data3, data4, data5, data6, data7) {
+function renderMovieNames(data, data2, data3, data4, data5, data6, data7, data8) {
+  let celebBloop = document.createElement('p')
+  celebBloop.textContent = data8;
+  celebBloop.setAttribute("style", "font-weight: bold")
+
   let movieName = document.createElement('h3');
   movieName.textContent = data
 
@@ -217,6 +222,7 @@ function renderMovieNames(data, data2, data3, data4, data5, data6, data7) {
   titleDiv.appendChild(posterImg);
   infoDiv.appendChild(tvTitle);
   infoDiv.appendChild(movieName);
+  infoDiv.appendChild(celebBloop);
   infoDiv.appendChild(movieRelease);
   infoDiv.appendChild(airDate);
   infoDiv.appendChild(overviewData);
