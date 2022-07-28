@@ -12,6 +12,8 @@ var movieList =  document.getElementById("lower-card");
 var searchHistory = document.getElementById("search-history");
 var celebLimit=5
 
+placeholderImg="http://via.placeholder.com/180x270"
+
 // var imdbKey = "k_7e0pfp3k"
 // var imdbKey = "k_zva2d8cp"
 var imdbKey="57df2f59f73d6513b02f8a10cd393e77"
@@ -130,7 +132,12 @@ function appendCelebImage(celeb,data) {
   subCard.setAttribute("style", "margin-right:20px; padding:10px")
  // console.log(subCard)
   let img = document.createElement("img")
-  img.setAttribute("src",`https://image.tmdb.org/t/p/original${data.results[0].profile_path}`)
+  if(data.results[0].profile_path){
+    img.setAttribute("src",`https://image.tmdb.org/t/p/original${data.results[0].profile_path}`)
+  } else {
+    img.setAttribute("src",placeholderImg)
+  }
+
   img.setAttribute("style","width: 180px; margin-right:20px; box-shadow: 5px 5px 5px lightblue")
   subCard.appendChild(img)
 }
@@ -193,8 +200,11 @@ function renderMovieNames(data, data2, data3, data4, data5, data6, data7, data8)
   airDate.textContent = data7;
  
   let posterImg = document.createElement('img');
-
-  posterImg.setAttribute("src", "https://image.tmdb.org/t/p/original/" + (data2));
+  if (!data2) {
+    posterImg.setAttribute("src", placeholderImg);
+  } else {
+    posterImg.setAttribute("src", "https://image.tmdb.org/t/p/original/" + (data2));
+  }
   posterImg.setAttribute("style", "width:180px; margin-right: 20px; box-shadow: 5px 5px 5px lightblue;");
 
   let userRating = document.createElement('p');
