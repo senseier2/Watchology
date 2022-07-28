@@ -12,7 +12,7 @@ var movieList =  document.getElementById("lower-card");
 var searchHistory = document.getElementById("search-history");
 var celebLimit=5
 
-placeholderImg="http://via.placeholder.com/180x270"
+placeholderImg="./assets/images/person-image.jpg"
 
 // var imdbKey = "k_7e0pfp3k"
 // var imdbKey = "k_zva2d8cp"
