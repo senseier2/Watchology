@@ -97,6 +97,10 @@ font-size: large;
     background-color: aliceblue;
 }
 
+.ui-datepicker-year{
+    display:none;
+}
+
 @media screen and (max-width: 1400px) {
     .card-body {
         width:100%;

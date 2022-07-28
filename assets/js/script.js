@@ -294,7 +294,8 @@ localStorage.setItem("birthdate", JSON.stringify(birthDate));
 $( function() {
   $( "#datepicker" ).datepicker({
     changeMonth: true,
-    changeYear: true
+    changeYear: false, 
+    dateFormat: 'mm/dd',
   });
 } );
 
