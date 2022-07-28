@@ -33,11 +33,19 @@
 ul {
     list-style: none;
 }
-
-
+#submit {
+    width:100%;
+}
+#search-history {
+    text-align: center;
+}
 li:hover {
     color: white;
     transition: 1s;
+}
+
+.secondary-button {
+    width: 65%;
 }
 
 main {
@@ -95,7 +103,6 @@ font-size: large;
         height: fit-content;
         display: flex;
         flex-wrap: wrap;
-        flex-grow;
         padding: 50px;
         position: relative;
   

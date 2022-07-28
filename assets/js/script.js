@@ -249,14 +249,6 @@ console.log(typeof stored )
 var birthDate = checkLocalStorage();
 console.log(birthDate)
 
-//Render birthdates to page
-
-  //capture birthdays from the array
-
-
-  //Append birthdays to the search history div
-
-
 // Creating function to grab user input
 var formSubmitHandler = function(event) {
   event.preventDefault();
@@ -264,22 +256,40 @@ var birthdayDates = document.querySelector("#datepicker");
    // console.log (birthdayDates.value.split ("/",2))
 
     getOnThisDay(birthdayDates.value.split ("/",2));
-
-
+    let firstSearch = document.createElement("li");
+    firstSearch.textContent = birthdayDates.value.split ("/",2).join("/");
+    let nChildren = searchHistory.getElementsByTagName('*').length;
+    if (nChildren < 5) {
+      searchHistory.appendChild(firstSearch);
+      birthDate.push(birthdayDates.value.split("/",2).join("/"))
+    } else {
+      oldestElement=searchHistory.getElementsByTagName('*')[0]
+      oldestElement.remove()
+      searchHistory.appendChild(firstSearch);
+      birthDate.shift()
+      birthDate.push(birthdayDates.value.split("/",2).join("/"))
+    }
 
 //Append to birthday list
-let firstSearch = document.createElement("li");
-    firstSearch.textContent = birthdayDates.value.split ("/",2);
-    searchHistory.appendChild(firstSearch);
+
+    
+    
 
 //Append to Array
-birthDate.push(birthdayDates.value.split("/",2).join("/"))
+
 console.log(birthDate)
 //Update Local storage
 localStorage.setItem("birthdate", JSON.stringify(birthDate)); 
 
 
 }
+
+// before appending to list
+// check how many are in list
+// if 5 or more
+// delete oldest entry
+// then append li 
+// then add to birthay array
 
 $( function() {
   $( "#datepicker" ).datepicker({
