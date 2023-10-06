@@ -103,6 +103,11 @@ font-size: large;
     font-size: 1.3rem;
 }
 
+.modal-footer {
+    background-color:var(--dark-blue);
+}
+
+
 .moveDiv {
     display:flex; 
 }
