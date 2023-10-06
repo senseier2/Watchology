@@ -92,6 +92,12 @@ font-size: large;
     border: solid 1px var(--darkest-blue);
 }
 
+.modal-head {
+    background-color:var(--dark-blue);
+    color: white;
+    font-weight: bold;
+}
+
 .moveDiv {
     display:flex; 
 }
