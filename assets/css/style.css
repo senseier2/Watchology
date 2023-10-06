@@ -107,6 +107,15 @@ font-size: large;
     background-color:var(--dark-blue);
 }
 
+.modal-buttonStyle {
+    background-color:var(--mid-blue);
+    border-color:var(--mid-blue);
+    box-shadow: 0 2px 4px black;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
 
 .moveDiv {
     display:flex; 
