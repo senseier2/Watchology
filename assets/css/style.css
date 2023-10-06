@@ -98,6 +98,11 @@ font-size: large;
     font-weight: bold;
 }
 
+.modal-body{
+    background-color:var(--lightest-blue);
+    font-size: 1.3rem;
+}
+
 .moveDiv {
     display:flex; 
 }
